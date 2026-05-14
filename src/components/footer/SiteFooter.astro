@@ -1,5 +1,5 @@
 ---
-import { ArrowUp, Download, Github, Linkedin, Mail } from "lucide-astro";
+import { ArrowUp, Download, Github, Linkedin } from "lucide-astro";
 import { socialLinks } from "@data/socialLinks";
 ---
 
@@ -12,17 +12,12 @@ import { socialLinks } from "@data/socialLinks";
 
     <a class="footer-link" href={socialLinks.github} target="_blank" rel="noreferrer">
       <Github size={24} aria-hidden="true" />
-      <span><strong>GitHub</strong> github.com/example</span>
+      <span><strong>GitHub</strong> github.com/evanmorristest</span>
     </a>
 
     <a class="footer-link" href={socialLinks.linkedin} target="_blank" rel="noreferrer">
       <Linkedin size={24} aria-hidden="true" />
-      <span><strong>LinkedIn</strong> linkedin.com/in/example</span>
-    </a>
-
-    <a class="footer-link" href={`mailto:${socialLinks.email}`}>
-      <Mail size={24} aria-hidden="true" />
-      <span><strong>Email</strong> {socialLinks.email}</span>
+      <span><strong>LinkedIn</strong> linkedin.com/in/evanmorrisdev</span>
     </a>
 
     <a class="footer-link" href={socialLinks.resume}>
@@ -38,4 +33,3 @@ import { socialLinks } from "@data/socialLinks";
     </a>
   </div>
 </footer>
-
