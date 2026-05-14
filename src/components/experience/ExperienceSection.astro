@@ -1,0 +1,57 @@
+---
+import { BriefcaseBusiness, GraduationCap } from "lucide-astro";
+import { education, workExperience } from "@data/experience";
+---
+
+<section class="section-block experience-section">
+  <div class="site-shell">
+    <div class="section-heading stacked">
+      <h2>Experience</h2>
+    </div>
+
+    <div class="experience-grid">
+      <div>
+        <h3 class="timeline-title">
+          <BriefcaseBusiness size={20} aria-hidden="true" />
+          Work Experience
+        </h3>
+        <div class="timeline">
+          {
+            workExperience.map((item) => (
+              <article class="timeline-item">
+                <div class="timeline-head">
+                  <h4>{item.title}</h4>
+                  <span>{item.timeline}</span>
+                </div>
+                <p class="timeline-company">{item.company}</p>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3 class="timeline-title">
+          <GraduationCap size={20} aria-hidden="true" />
+          Education
+        </h3>
+        <div class="timeline">
+          {
+            education.map((item) => (
+              <article class="timeline-item">
+                <div class="timeline-head">
+                  <h4>{item.title}</h4>
+                  <span>{item.timeline}</span>
+                </div>
+                <p class="timeline-company">{item.institution}</p>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,58 @@
+---
+import { ArrowUpRight, Download, Github, Mail } from "lucide-astro";
+import { socialLinks } from "@data/socialLinks";
+
+const codeSnippet = `const portfolio = {
+  role: "Software Engineer",
+  focus: ["Product", "Automation", "AI"],
+  status: "Available"
+};`;
+---
+
+<section class="hero-section" id="top">
+  <div class="site-shell hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Hello, I'm</span>
+      <h1>Robert Deckow</h1>
+      <p class="hero-role">Software Engineer &amp; Developer</p>
+      <p class="hero-summary">
+        I build reliable, scalable, and user-centric applications with a focus on clean code,
+        performance, automation, and maintainable systems.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="/projects/">
+          <ArrowUpRight size={17} aria-hidden="true" />
+          View Projects
+        </a>
+        <a class="button secondary" href={socialLinks.github} target="_blank" rel="noreferrer">
+          <Github size={17} aria-hidden="true" />
+          GitHub
+        </a>
+        <a class="button secondary" href={socialLinks.resume}>
+          <Download size={17} aria-hidden="true" />
+          Resume
+        </a>
+        <a class="button secondary" href="/contact/">
+          <Mail size={17} aria-hidden="true" />
+          Contact
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Monochrome development workspace illustration">
+      <div class="workspace-art">
+        <div class="code-window">
+          <span></span>
+          <span></span>
+          <span></span>
+          <pre>{codeSnippet}</pre>
+        </div>
+        <div class="laptop-base"></div>
+        <div class="plant">
+          <i></i><i></i><i></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

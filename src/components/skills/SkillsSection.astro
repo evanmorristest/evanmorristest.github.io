@@ -1,0 +1,31 @@
+---
+import { skillGroups } from "@data/skills";
+---
+
+<section class="section-block">
+  <div class="site-shell">
+    <div class="section-heading stacked">
+      <h2>Skills</h2>
+      <p>Technologies and tools I work with</p>
+    </div>
+
+    <div class="skills-list">
+      {
+        skillGroups.map((group) => (
+          <div class="skill-row">
+            <h3>{group.category}</h3>
+            <div class="skill-grid">
+              {group.items.map((item) => (
+                <div class="skill-tile">
+                  <span class="skill-mark">{item.slice(0, 2)}</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+

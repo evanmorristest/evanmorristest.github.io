@@ -1,0 +1,41 @@
+---
+import { ArrowUp, Download, Github, Linkedin, Mail } from "lucide-astro";
+import { socialLinks } from "@data/socialLinks";
+---
+
+<footer class="footer-section">
+  <div class="site-shell footer-grid">
+    <div class="footer-intro">
+      <h2>Let's build something great together.</h2>
+      <p>I'm always open to thoughtful products, useful tools, and interesting engineering problems.</p>
+    </div>
+
+    <a class="footer-link" href={socialLinks.github} target="_blank" rel="noreferrer">
+      <Github size={24} aria-hidden="true" />
+      <span><strong>GitHub</strong> github.com/example</span>
+    </a>
+
+    <a class="footer-link" href={socialLinks.linkedin} target="_blank" rel="noreferrer">
+      <Linkedin size={24} aria-hidden="true" />
+      <span><strong>LinkedIn</strong> linkedin.com/in/example</span>
+    </a>
+
+    <a class="footer-link" href={`mailto:${socialLinks.email}`}>
+      <Mail size={24} aria-hidden="true" />
+      <span><strong>Email</strong> {socialLinks.email}</span>
+    </a>
+
+    <a class="footer-link" href={socialLinks.resume}>
+      <Download size={24} aria-hidden="true" />
+      <span><strong>Resume</strong> Download PDF</span>
+    </a>
+  </div>
+
+  <div class="site-shell footer-bottom">
+    <p>&copy; 2026 Software Engineer Portfolio. All rights reserved.</p>
+    <a class="back-to-top" href="#top" aria-label="Back to top">
+      <ArrowUp size={18} aria-hidden="true" />
+    </a>
+  </div>
+</footer>
+
