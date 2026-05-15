@@ -17,8 +17,11 @@ import { skillGroups } from "@data/skills";
             <div class="skill-grid">
               {group.items.map((item) => (
                 <div class="skill-tile">
-                  <span class="skill-mark">{item.slice(0, 2)}</span>
-                  <span>{item}</span>
+                  <span class="skill-mark" aria-hidden="true">
+                    <img src={item.iconUrl} alt="" loading="lazy" onerror="this.hidden = true; this.nextElementSibling.hidden = false;" />
+                    <span hidden>{item.name.slice(0, 2)}</span>
+                  </span>
+                  <span>{item.name}</span>
                 </div>
               ))}
             </div>
@@ -28,4 +31,3 @@ import { skillGroups } from "@data/skills";
     </div>
   </div>
 </section>
-
