@@ -2,14 +2,16 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageIntro from "@components/shared/PageIntro.astro";
 import FeaturedProjects from "@components/projects/FeaturedProjects.astro";
+import { pageContent } from "@data/site";
+
+const page = pageContent.projects;
 ---
 
-<BaseLayout title="Projects | Software Engineer Portfolio">
+<BaseLayout title={page.metaTitle}>
   <PageIntro
-    eyebrow="Projects"
-    title="Selected work, systems, and technical case studies."
-    description="The full projects index will support deeper project writeups, tags, screenshots, architecture notes, and source links. Generic project cards are shown for now."
+    eyebrow={page.eyebrow}
+    title={page.title}
+    description={page.description}
   />
   <FeaturedProjects />
 </BaseLayout>
-

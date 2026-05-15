@@ -1,6 +1,7 @@
 ---
 import { Menu, X } from "lucide-astro";
 import { navigationItems } from "@data/navigation";
+import { navigationContent } from "@data/site";
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -9,9 +10,9 @@ const isActive = (href: string) =>
 
 <header class="site-header">
   <div class="site-shell header-inner">
-    <a href="/" class="brand" aria-label="Portfolio home">RD</a>
+    <a href="/" class="brand" aria-label={navigationContent.homeAriaLabel}>{navigationContent.brandLabel}</a>
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label={navigationContent.primaryAriaLabel}>
       {
         navigationItems.map((item) => (
           <a href={item.href} class:list={["nav-link", { active: isActive(item.href) }]}>
@@ -21,13 +22,13 @@ const isActive = (href: string) =>
       }
     </nav>
 
-    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+    <button class="menu-toggle" type="button" aria-label={navigationContent.openMenuLabel} aria-expanded="false">
       <Menu class="menu-open" size={22} aria-hidden="true" />
       <X class="menu-close" size={22} aria-hidden="true" />
     </button>
   </div>
 
-  <nav class="mobile-nav site-shell" aria-label="Mobile navigation">
+  <nav class="mobile-nav site-shell" aria-label={navigationContent.mobileAriaLabel}>
     {
       navigationItems.map((item) => (
         <a href={item.href} class:list={["mobile-link", { active: isActive(item.href) }]}>
@@ -38,14 +39,13 @@ const isActive = (href: string) =>
   </nav>
 </header>
 
-<script>
+<script define:vars={{ openMenuLabel: navigationContent.openMenuLabel, closeMenuLabel: navigationContent.closeMenuLabel }}>
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
 
   toggle?.addEventListener("click", () => {
     const isOpen = header?.classList.toggle("mobile-open") ?? false;
     toggle.setAttribute("aria-expanded", String(isOpen));
-    toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    toggle.setAttribute("aria-label", isOpen ? closeMenuLabel : openMenuLabel);
   });
 </script>
-

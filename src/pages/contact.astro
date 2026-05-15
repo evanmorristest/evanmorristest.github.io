@@ -1,22 +1,32 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageIntro from "@components/shared/PageIntro.astro";
-import { socialLinks } from "@data/socialLinks";
+import { contactContent, pageContent } from "@data/site";
+
+const page = pageContent.contact;
 ---
 
-<BaseLayout title="Contact | Software Engineer Portfolio">
+<BaseLayout title={page.metaTitle}>
   <PageIntro
-    eyebrow="Contact"
-    title="Start a conversation about a project, role, or collaboration."
-    description="Use the placeholder links below for now. These can be replaced with the final email, social profiles, and CV before launch."
+    eyebrow={page.eyebrow}
+    title={page.title}
+    description={page.description}
   />
 
   <section class="section-block compact-section">
     <div class="site-shell contact-panel">
-      <a href={`mailto:${socialLinks.email}`}>Email: {socialLinks.email}</a>
-      <a href={socialLinks.github} target="_blank" rel="noreferrer">GitHub</a>
-      <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-      <a href={socialLinks.resume} download>CV PDF</a>
+      {
+        contactContent.links.map((link) => (
+          <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noreferrer" : undefined}
+            download={link.download}
+          >
+            {link.text}
+          </a>
+        ))
+      }
     </div>
   </section>
 </BaseLayout>

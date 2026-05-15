@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SiteHeader from "@components/navigation/SiteHeader.astro";
 import SiteFooter from "@components/footer/SiteFooter.astro";
+import { siteMeta } from "@data/site";
 
 interface Props {
   title?: string;
@@ -9,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = "Software Engineer Portfolio",
-  description = "A minimalist software engineering portfolio focused on projects, skills, experience, and writing."
+  title = siteMeta.title,
+  description = siteMeta.description
 } = Astro.props;
 ---
 
@@ -36,4 +37,3 @@ const {
     <SiteFooter />
   </body>
 </html>
-

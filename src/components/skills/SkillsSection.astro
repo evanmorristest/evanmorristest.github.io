@@ -1,12 +1,15 @@
 ---
 import { skillGroups } from "@data/skills";
+import { sectionContent } from "@data/site";
+
+const section = sectionContent.skills;
 ---
 
 <section class="section-block">
   <div class="site-shell">
     <div class="section-heading stacked">
-      <h2>Skills</h2>
-      <p>Technologies and tools I work with</p>
+      <h2>{section.title}</h2>
+      <p>{section.description}</p>
     </div>
 
     <div class="skills-list">

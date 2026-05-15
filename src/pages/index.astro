@@ -4,15 +4,15 @@ import ExperienceSection from "@components/experience/ExperienceSection.astro";
 import HeroSection from "@components/hero/HeroSection.astro";
 import FeaturedProjects from "@components/projects/FeaturedProjects.astro";
 import SkillsSection from "@components/skills/SkillsSection.astro";
+import { siteMeta } from "@data/site";
 ---
 
 <BaseLayout
-  title="Robert Deckow | Software Engineer"
-  description="Software engineering portfolio featuring projects, skills, experience, writing, and contact information."
+  title={siteMeta.homeTitle}
+  description={siteMeta.homeDescription}
 >
   <HeroSection />
   <FeaturedProjects />
   <SkillsSection />
   <ExperienceSection />
 </BaseLayout>
-

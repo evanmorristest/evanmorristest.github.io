@@ -1,19 +1,22 @@
 ---
 import { BriefcaseBusiness, GraduationCap } from "lucide-astro";
 import { education, workExperience } from "@data/experience";
+import { sectionContent } from "@data/site";
+
+const section = sectionContent.experience;
 ---
 
 <section class="section-block experience-section">
   <div class="site-shell">
     <div class="section-heading stacked">
-      <h2>Experience</h2>
+      <h2>{section.title}</h2>
     </div>
 
     <div class="experience-grid">
       <div>
         <h3 class="timeline-title">
           <BriefcaseBusiness size={20} aria-hidden="true" />
-          Work Experience
+          {section.workTitle}
         </h3>
         <div class="timeline">
           {
@@ -34,7 +37,7 @@ import { education, workExperience } from "@data/experience";
       <div>
         <h3 class="timeline-title">
           <GraduationCap size={20} aria-hidden="true" />
-          Education
+          {section.educationTitle}
         </h3>
         <div class="timeline">
           {
@@ -54,4 +57,3 @@ import { education, workExperience } from "@data/experience";
     </div>
   </div>
 </section>
-

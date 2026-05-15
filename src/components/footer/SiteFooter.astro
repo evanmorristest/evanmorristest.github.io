@@ -1,34 +1,48 @@
 ---
 import { ArrowUp, Download, Github, Linkedin } from "lucide-astro";
-import { socialLinks } from "@data/socialLinks";
+import { footerContent, siteMeta } from "@data/site";
+
+const renderIcon = (icon: string) => {
+  const icons = {
+    download: Download,
+    github: Github,
+    linkedin: Linkedin
+  };
+
+  return icons[icon as keyof typeof icons];
+};
 ---
 
 <footer class="footer-section">
   <div class="site-shell footer-grid">
     <div class="footer-intro">
-      <h2>Let's build something great together.</h2>
-      <p>I'm always open to thoughtful products, useful tools, and interesting engineering problems.</p>
+      <h2>{footerContent.heading}</h2>
+      <p>{footerContent.description}</p>
     </div>
 
-    <a class="footer-link" href={socialLinks.github} target="_blank" rel="noreferrer">
-      <Github size={24} aria-hidden="true" />
-      <span><strong>GitHub</strong> github.com/evanmorristest</span>
-    </a>
+    {
+      footerContent.links.map((link) => {
+        const Icon = renderIcon(link.icon);
 
-    <a class="footer-link" href={socialLinks.linkedin} target="_blank" rel="noreferrer">
-      <Linkedin size={24} aria-hidden="true" />
-      <span><strong>LinkedIn</strong> linkedin.com/in/evanmorrisdev</span>
-    </a>
-
-    <a class="footer-link" href={socialLinks.resume} download>
-      <Download size={24} aria-hidden="true" />
-      <span><strong>CV</strong> Download PDF</span>
-    </a>
+        return (
+          <a
+            class="footer-link"
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noreferrer" : undefined}
+            download={link.download}
+          >
+            <Icon size={24} aria-hidden="true" />
+            <span><strong>{link.label}</strong> {link.displayText}</span>
+          </a>
+        );
+      })
+    }
   </div>
 
   <div class="site-shell footer-bottom">
-    <p>&copy; 2026 Software Engineer Portfolio. All rights reserved.</p>
-    <a class="back-to-top" href="#top" aria-label="Back to top">
+    <p>&copy; {siteMeta.copyright}</p>
+    <a class="back-to-top" href="#top" aria-label={footerContent.backToTopLabel}>
       <ArrowUp size={18} aria-hidden="true" />
     </a>
   </div>

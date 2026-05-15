@@ -2,6 +2,7 @@
 import { CalendarDays, Clock, ExternalLink, MessageCircle, ThumbsUp } from "lucide-astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PageIntro from "@components/shared/PageIntro.astro";
+import { blogContent, pageContent } from "@data/site";
 
 interface DevArticle {
   id: number;
@@ -17,8 +18,8 @@ interface DevArticle {
   reading_time_minutes: number;
 }
 
-const DEV_USERNAME = "evanmorris";
-const DEV_ARTICLES_URL = `https://dev.to/api/articles?username=${DEV_USERNAME}&per_page=9`;
+const page = pageContent.blog;
+const DEV_ARTICLES_URL = `https://dev.to/api/articles?username=${blogContent.devUsername}&per_page=${blogContent.articlesPerPage}`;
 
 let articles: DevArticle[] = [];
 let hasFetchError = false;
@@ -26,7 +27,7 @@ let hasFetchError = false;
 try {
   const response = await fetch(DEV_ARTICLES_URL, {
     headers: {
-      "User-Agent": "evanmorristest.github.io portfolio site"
+      "User-Agent": blogContent.apiUserAgent
     }
   });
 
@@ -37,26 +38,26 @@ try {
   articles = await response.json();
 } catch (error) {
   hasFetchError = true;
-  console.error("Unable to fetch DEV articles", error);
+  console.error(blogContent.errorLogMessage, error);
 }
 ---
 
-<BaseLayout title="Blog | Software Engineer Portfolio">
+<BaseLayout title={page.metaTitle}>
   <PageIntro
-    eyebrow="Blog"
-    title="Notes on software engineering, automation, and building better tools."
-    description="Latest writing pulled from DEV, keeping articles in one publishing workflow while presenting them inside this portfolio."
+    eyebrow={page.eyebrow}
+    title={page.title}
+    description={page.description}
   />
 
   <section class="section-block">
     <div class="site-shell">
       <div class="section-heading">
         <div>
-          <h2>Latest Articles</h2>
-          <p>Fetched from dev.to/{DEV_USERNAME}</p>
+          <h2>{blogContent.sectionTitle}</h2>
+          <p>{blogContent.sourceLabel}/{blogContent.devUsername}</p>
         </div>
-        <a class="text-link" href={`https://dev.to/${DEV_USERNAME}`} target="_blank" rel="noreferrer">
-          View on DEV <ExternalLink size={16} aria-hidden="true" />
+        <a class="text-link" href={`https://dev.to/${blogContent.devUsername}`} target="_blank" rel="noreferrer">
+          {blogContent.viewProfileLabel} <ExternalLink size={16} aria-hidden="true" />
         </a>
       </div>
 
@@ -85,7 +86,7 @@ try {
                     </span>
                     <span>
                       <Clock size={15} aria-hidden="true" />
-                      {article.reading_time_minutes} min read
+                      {article.reading_time_minutes} {blogContent.readingTimeSuffix}
                     </span>
                   </div>
 
@@ -111,7 +112,7 @@ try {
                     {article.comments_count}
                   </span>
                   <a href={article.url} target="_blank" rel="noreferrer">
-                    Read article <ExternalLink size={15} aria-hidden="true" />
+                    {blogContent.readArticleLabel} <ExternalLink size={15} aria-hidden="true" />
                   </a>
                 </div>
               </article>
@@ -119,14 +120,14 @@ try {
           </div>
         ) : (
           <div class="empty-state">
-            <h2>{hasFetchError ? "Articles could not be loaded." : "No DEV articles found yet."}</h2>
+            <h2>{hasFetchError ? blogContent.errorTitle : blogContent.emptyTitle}</h2>
             <p>
               {hasFetchError
-                ? "The DEV API request failed during page generation. The route is still available and will populate on the next successful build."
-                : `Publish articles under the ${DEV_USERNAME} DEV account and they will appear here automatically.`}
+                ? blogContent.errorDescription
+                : blogContent.emptyDescription}
             </p>
-            <a class="button secondary" href={`https://dev.to/${DEV_USERNAME}`} target="_blank" rel="noreferrer">
-              Open DEV Profile <ExternalLink size={17} aria-hidden="true" />
+            <a class="button secondary" href={`https://dev.to/${blogContent.devUsername}`} target="_blank" rel="noreferrer">
+              {blogContent.openProfileLabel} <ExternalLink size={17} aria-hidden="true" />
             </a>
           </div>
         )
