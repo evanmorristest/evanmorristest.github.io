@@ -120,7 +120,9 @@ export const sectionContent = {
   experience: {
     title: "Experience",
     workTitle: "Work Experience",
-    educationTitle: "Education"
+    educationTitle: "Education",
+    certificationsTitle: "Certifications",
+    credentialLabel: "View credential"
   }
 };
 
@@ -128,9 +130,9 @@ export const pageContent = {
   about: {
     metaTitle: "About | Software Engineer Portfolio",
     eyebrow: "About",
-    title: "Engineering useful software with calm, durable foundations.",
+    title: "A software engineer focused on reliable systems and thoughtful product delivery.",
     description:
-      "This page will hold the personal background, engineering philosophy, technologies, interests, and timeline. Placeholder content is ready to be replaced with the final biography."
+      "A flexible biography page for background, engineering values, technologies, interests, and timeline milestones."
   },
   projects: {
     metaTitle: "Projects | Software Engineer Portfolio",
@@ -200,4 +202,94 @@ export const contactContent = {
       download: true
     }
   ]
+};
+
+export const aboutContent = {
+  biography: {
+    title: "Personal Background",
+    paragraphs: [
+      "I am a software engineer who enjoys building useful, maintainable products and the systems that keep them reliable. My work spans frontend interfaces, backend integrations, test automation, CI/CD, and developer tooling.",
+      "This page is structured so the final biography can grow naturally over time. Each section can be shortened, expanded, or removed without changing the page layout."
+    ],
+    highlights: [
+      { label: "Focus", value: "Product engineering, automation, and platform quality" },
+      { label: "Strength", value: "Turning ambiguous problems into dependable software" },
+      { label: "Working style", value: "Clear communication, pragmatic delivery, and steady iteration" }
+    ]
+  },
+  philosophy: {
+    title: "Engineering Philosophy",
+    items: [
+      {
+        title: "Build for maintainability",
+        description:
+          "Prefer simple systems, clear boundaries, and code that future engineers can understand quickly."
+      },
+      {
+        title: "Automate the repeatable",
+        description:
+          "Use tests, pipelines, and tooling to make quality part of the workflow rather than a final checkpoint."
+      },
+      {
+        title: "Design around users",
+        description:
+          "Make technical decisions that support real workflows, readable interfaces, and resilient experiences."
+      }
+    ]
+  },
+  technologies: {
+    title: "Technologies",
+    groups: [
+      {
+        label: "Languages",
+        items: ["TypeScript", "C#", "Python"]
+      },
+      {
+        label: "Frontend",
+        items: ["Astro", "React", "Tailwind CSS"]
+      },
+      {
+        label: "Quality",
+        items: ["Playwright", "Selenium", "WDIO", "BrowserStack"]
+      },
+      {
+        label: "Delivery",
+        items: ["GitHub Actions", "Docker", "Cloud platforms"]
+      }
+    ]
+  },
+  interests: {
+    title: "Interests",
+    items: [
+      "Developer experience",
+      "Automation strategy",
+      "Accessible interfaces",
+      "AI-assisted engineering",
+      "Performance tuning",
+      "Technical writing"
+    ]
+  },
+  timeline: {
+    title: "Timeline",
+    items: [
+      {
+        title: "Senior Software Engineer",
+        timeline: "2024 - Present",
+        description:
+          "Leading product engineering initiatives, automation improvements, and delivery workflows."
+      },
+      {
+        title: "Software Engineer",
+        timeline: "2022 - 2023",
+        description:
+          "Built full-stack features, strengthened testing practices, and worked across product teams."
+      },
+      {
+        title: "Early Engineering Work",
+        timeline: "2021 - 2022",
+        description:
+          "Developed responsive web applications, integrated APIs, and improved frontend reliability."
+      }
+    ]
+  }
 };

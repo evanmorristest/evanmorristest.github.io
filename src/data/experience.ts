@@ -39,3 +39,22 @@ export const education = [
   }
 ];
 
+export const certifications = [
+  {
+    title: "Cloud Practitioner Certification",
+    issuer: "Cloud Provider",
+    timeline: "Issued 2025",
+    description:
+      "Foundational certification covering cloud concepts, core services, security, and operational best practices.",
+    credentialUrl: "#"
+  },
+  {
+    title: "Automation Testing Certification",
+    issuer: "Testing Institute",
+    timeline: "Issued 2024",
+    description:
+      "Credential focused on test automation strategy, browser automation, CI integration, and reliable test design.",
+    credentialUrl: "#"
+  }
+];
+

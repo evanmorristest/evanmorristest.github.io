@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import AboutContent from "@components/about/AboutContent.astro";
 import PageIntro from "@components/shared/PageIntro.astro";
 import { pageContent } from "@data/site";
 
@@ -12,4 +13,5 @@ const page = pageContent.about;
     title={page.title}
     description={page.description}
   />
+  <AboutContent />
 </BaseLayout>

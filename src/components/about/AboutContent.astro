@@ -1,0 +1,95 @@
+---
+import { aboutContent } from "@data/site";
+---
+
+<section class="section-block about-section">
+  <div class="site-shell about-layout">
+    <article class="about-biography">
+      <div class="section-heading stacked">
+        <h2>{aboutContent.biography.title}</h2>
+      </div>
+      {
+        aboutContent.biography.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))
+      }
+      <div class="about-highlights">
+        {
+          aboutContent.biography.highlights.map((highlight) => (
+            <div>
+              <span>{highlight.label}</span>
+              <strong>{highlight.value}</strong>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+
+    <aside class="about-panel">
+      <h2>{aboutContent.interests.title}</h2>
+      <div class="tag-list">
+        {aboutContent.interests.items.map((item) => <span>{item}</span>)}
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section-block about-muted">
+  <div class="site-shell">
+    <div class="section-heading stacked">
+      <h2>{aboutContent.philosophy.title}</h2>
+    </div>
+
+    <div class="about-card-grid">
+      {
+        aboutContent.philosophy.items.map((item) => (
+          <article class="about-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="site-shell about-layout">
+    <div>
+      <div class="section-heading stacked">
+        <h2>{aboutContent.technologies.title}</h2>
+      </div>
+      <div class="about-tech-list">
+        {
+          aboutContent.technologies.groups.map((group) => (
+            <div class="about-tech-row">
+              <h3>{group.label}</h3>
+              <div class="tag-list">
+                {group.items.map((item) => <span>{item}</span>)}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <div class="section-heading stacked">
+        <h2>{aboutContent.timeline.title}</h2>
+      </div>
+      <div class="timeline">
+        {
+          aboutContent.timeline.items.map((item) => (
+            <article class="timeline-item">
+              <div class="timeline-head">
+                <h4>{item.title}</h4>
+                <span>{item.timeline}</span>
+              </div>
+              <p>{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

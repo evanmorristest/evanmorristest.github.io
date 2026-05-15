@@ -42,8 +42,19 @@ const renderIcon = (icon: string) => {
 
   <div class="site-shell footer-bottom">
     <p>&copy; {siteMeta.copyright}</p>
-    <a class="back-to-top" href="#top" aria-label={footerContent.backToTopLabel}>
-      <ArrowUp size={18} aria-hidden="true" />
-    </a>
   </div>
 </footer>
+
+<a class="back-to-top" href="#top" aria-label={footerContent.backToTopLabel}>
+  <ArrowUp size={18} aria-hidden="true" />
+</a>
+
+<script>
+  const backToTop = document.querySelector(".back-to-top");
+  const updateBackToTop = () => {
+    backToTop?.classList.toggle("visible", window.scrollY > 12);
+  };
+
+  updateBackToTop();
+  window.addEventListener("scroll", updateBackToTop, { passive: true });
+</script>
