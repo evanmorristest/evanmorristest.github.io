@@ -4,12 +4,10 @@ const displayUrl = (url: string) => url.replace(/^https?:\/\//, "").replace(/\/$
 
 export const siteMeta = {
   title: "Software Engineer Portfolio",
-  description:
-    "A minimalist software engineering portfolio focused on projects, skills, experience, and writing.",
+  description: "Software engineering portfolio focused on projects, skills, experience, and writing.",
   homeTitle: "Evan Morris | Software Engineer",
-  homeDescription:
-    "Software engineering portfolio featuring projects, skills, experience, writing, and contact information.",
-  copyright: "2026 Software Engineer Portfolio. All rights reserved."
+  homeDescription: "Software engineering portfolio featuring projects, skills, experience, writing, and contact information.",
+  copyright: "2026 Evan Morris Portfolio. All rights reserved."
 };
 
 export const navigationContent = {
@@ -26,11 +24,11 @@ export const heroContent = {
   name: "Evan Morris",
   role: "Software Engineer & Automation Tester",
   summary:
-    "I build reliable, scalable, and user-centric applications with a focus on clean code, performance, automation, and maintainable systems.",
+    "I have years of experience owning end-to-end quality in software development. I build automation frameworks, testing tools, drive quality in engineering teams.",
   visualLabel: "Monochrome development workspace illustration",
   codeSnippet: `const portfolio = {
   role: "Software Engineer",
-  focus: ["Product", "Automation", "AI"],
+  focus: ["Quality", "Automation", "Product"],
   status: "Available"
 };`,
   actions: [
@@ -64,9 +62,8 @@ export const heroContent = {
 };
 
 export const footerContent = {
-  heading: "Let's build something great together.",
-  description:
-    "I'm always open to thoughtful products, useful tools, and interesting engineering problems.",
+  heading: "Let's connect.",
+  description: "I'm always open to new ideas and interesting engineering problems.",
   backToTopLabel: "Back to top",
   links: [
     {
@@ -103,9 +100,7 @@ export const sectionContent = {
       "The GitHub API request failed during page generation. The section will populate again on the next successful build.",
     liveDemoLabel: "Live Demo",
     githubLabel: "GitHub",
-    updatedLabel: "Updated",
-    starsLabel: "Stars",
-    forksLabel: "Forks"
+    updatedLabel: "Updated"
   },
   projectsIndex: {
     title: "GitHub Repositories",
@@ -137,16 +132,16 @@ export const pageContent = {
   projects: {
     metaTitle: "Projects | Software Engineer Portfolio",
     eyebrow: "Projects",
-    title: "Selected work, systems, and technical case studies.",
+    title: "Personal projects, useful tools and interesting ideas.",
     description:
       "Public GitHub repositories are fetched at build time and presented here with descriptions, languages, topics, live links, and source links."
   },
   blog: {
     metaTitle: "Blog | Software Engineer Portfolio",
     eyebrow: "Blog",
-    title: "Notes on software engineering, automation, and building better tools.",
+    title: "Notes on software engineering.",
     description:
-      "Latest writing pulled from DEV, keeping articles in one publishing workflow while presenting them inside this portfolio."
+      "Latest writing pulled from my DEV.to profile. Consider liking or commenting on articles that you find interesting!"
   },
   contact: {
     metaTitle: "Contact | Software Engineer Portfolio",
