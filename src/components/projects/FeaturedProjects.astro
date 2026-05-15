@@ -1,9 +1,25 @@
 ---
-import { ArrowRight, ExternalLink, Github } from "lucide-astro";
-import { featuredProjects } from "@data/projects";
+import { ArrowRight, ExternalLink, GitFork, Github, Star } from "lucide-astro";
 import { sectionContent } from "@data/site";
+import { getFeaturedGitHubProjects, getGitHubProjects, type Project } from "@utils/githubProjects";
 
-const section = sectionContent.featuredProjects;
+interface Props {
+  mode?: "featured" | "all";
+}
+
+const { mode = "featured" } = Astro.props;
+const section = mode === "featured" ? sectionContent.featuredProjects : sectionContent.projectsIndex;
+const projectLabels = sectionContent.featuredProjects;
+
+let projects: Project[] = [];
+let hasFetchError = false;
+
+try {
+  projects = mode === "featured" ? await getFeaturedGitHubProjects() : await getGitHubProjects();
+} catch (error) {
+  hasFetchError = true;
+  console.error(projectLabels.emptyTitle, error);
+}
 ---
 
 <section class="section-block">
@@ -12,36 +28,65 @@ const section = sectionContent.featuredProjects;
       <div>
         <h2>{section.title}</h2>
       </div>
-      <a class="text-link" href={section.viewAllHref}>
-        {section.viewAllLabel} <ArrowRight size={16} aria-hidden="true" />
-      </a>
-    </div>
-
-    <div class="project-grid">
       {
-        featuredProjects.map((project, index) => (
-          <article class="project-card">
-            <a class={`project-image project-image-${index + 1}`} href={project.href}>
-              <span>{project.imageLabel}</span>
-            </a>
-            <div class="project-body">
-              <h3><a href={project.href}>{project.title}</a></h3>
-              <p>{project.summary}</p>
-              <div class="tag-list">
-                {project.tags.map((tag) => <span>{tag}</span>)}
-              </div>
-            </div>
-            <div class="project-links">
-              <a href={project.demoUrl}>
-                {section.liveDemoLabel} <ExternalLink size={15} aria-hidden="true" />
-              </a>
-              <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                {section.githubLabel} <Github size={15} aria-hidden="true" />
-              </a>
-            </div>
-          </article>
-        ))
+        mode === "featured" && (
+          <a class="text-link" href={projectLabels.viewAllHref}>
+            {projectLabels.viewAllLabel} <ArrowRight size={16} aria-hidden="true" />
+          </a>
+        )
       }
     </div>
+
+    {
+      projects.length > 0 ? (
+        <div class="project-grid">
+          {projects.map((project, index) => (
+            <article class="project-card">
+              <a
+                class={`project-image project-image-${(index % 3) + 1}`}
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>{project.imageLabel}</span>
+              </a>
+              <div class="project-body">
+                <h3><a href={project.githubUrl} target="_blank" rel="noreferrer">{project.title}</a></h3>
+                <p>{project.summary}</p>
+                <div class="tag-list">
+                  {project.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+                <div class="project-meta">
+                  <span title={projectLabels.starsLabel}>
+                    <Star size={15} aria-hidden="true" />
+                    {project.stars}
+                  </span>
+                  <span title={projectLabels.forksLabel}>
+                    <GitFork size={15} aria-hidden="true" />
+                    {project.forks}
+                  </span>
+                  <span>{projectLabels.updatedLabel} {new Date(project.updatedAt).toLocaleDateString("en-GB")}</span>
+                </div>
+              </div>
+              <div class="project-links">
+                {project.demoUrl && (
+                  <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                    {projectLabels.liveDemoLabel} <ExternalLink size={15} aria-hidden="true" />
+                  </a>
+                )}
+                <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                  {projectLabels.githubLabel} <Github size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <h2>{hasFetchError ? projectLabels.emptyTitle : sectionContent.projectsIndex.emptyTitle}</h2>
+          <p>{hasFetchError ? projectLabels.emptyDescription : sectionContent.projectsIndex.emptyDescription}</p>
+        </div>
+      )
+    }
   </div>
 </section>

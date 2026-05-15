@@ -98,8 +98,20 @@ export const sectionContent = {
     title: "Featured Projects",
     viewAllLabel: "View all projects",
     viewAllHref: "/projects/",
+    emptyTitle: "GitHub projects could not be loaded.",
+    emptyDescription:
+      "The GitHub API request failed during page generation. The section will populate again on the next successful build.",
     liveDemoLabel: "Live Demo",
-    githubLabel: "GitHub"
+    githubLabel: "GitHub",
+    updatedLabel: "Updated",
+    starsLabel: "Stars",
+    forksLabel: "Forks"
+  },
+  projectsIndex: {
+    title: "GitHub Repositories",
+    emptyTitle: "No public GitHub repositories found.",
+    emptyDescription:
+      "Public repositories from GitHub will appear here automatically once they are available."
   },
   skills: {
     title: "Skills",
@@ -125,7 +137,7 @@ export const pageContent = {
     eyebrow: "Projects",
     title: "Selected work, systems, and technical case studies.",
     description:
-      "The full projects index will support deeper project writeups, tags, screenshots, architecture notes, and source links. Generic project cards are shown for now."
+      "Public GitHub repositories are fetched at build time and presented here with descriptions, languages, topics, live links, and source links."
   },
   blog: {
     metaTitle: "Blog | Software Engineer Portfolio",
