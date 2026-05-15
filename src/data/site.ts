@@ -6,14 +6,14 @@ export const siteMeta = {
   title: "Software Engineer Portfolio",
   description:
     "A minimalist software engineering portfolio focused on projects, skills, experience, and writing.",
-  homeTitle: "Robert Deckow | Software Engineer",
+  homeTitle: "Evan Morris | Software Engineer",
   homeDescription:
     "Software engineering portfolio featuring projects, skills, experience, writing, and contact information.",
   copyright: "2026 Software Engineer Portfolio. All rights reserved."
 };
 
 export const navigationContent = {
-  brandLabel: "RD",
+  brandLabel: "EM",
   homeAriaLabel: "Portfolio home",
   primaryAriaLabel: "Primary navigation",
   mobileAriaLabel: "Mobile navigation",
@@ -23,8 +23,8 @@ export const navigationContent = {
 
 export const heroContent = {
   eyebrow: "Hello, I'm",
-  name: "Robert Deckow",
-  role: "Software Engineer & Developer",
+  name: "Evan Morris",
+  role: "Software Engineer & Automation Tester",
   summary:
     "I build reliable, scalable, and user-centric applications with a focus on clean code, performance, automation, and maintainable systems.",
   visualLabel: "Monochrome development workspace illustration",
