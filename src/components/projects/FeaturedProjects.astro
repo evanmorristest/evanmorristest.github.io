@@ -56,17 +56,6 @@ try {
                 <div class="tag-list">
                   {project.tags.map((tag) => <span>{tag}</span>)}
                 </div>
-                <div class="project-meta">
-                  <span title={projectLabels.starsLabel}>
-                    <Star size={15} aria-hidden="true" />
-                    {project.stars}
-                  </span>
-                  <span title={projectLabels.forksLabel}>
-                    <GitFork size={15} aria-hidden="true" />
-                    {project.forks}
-                  </span>
-                  <span>{projectLabels.updatedLabel} {new Date(project.updatedAt).toLocaleDateString("en-GB")}</span>
-                </div>
               </div>
               <div class="project-links">
                 {project.demoUrl && (
