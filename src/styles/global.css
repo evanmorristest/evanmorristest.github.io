@@ -116,16 +116,26 @@ img {
 }
 
 .nav-link:hover,
-.nav-link.active,
-.mobile-link:hover,
-.mobile-link.active {
+.mobile-link:hover {
   color: var(--foreground);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link.active,
+.mobile-link.active {
+  color: var(--foreground);
+  background: var(--soft);
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.nav-link:hover::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+.nav-link.active::after {
+  opacity: 0;
+  transform: scaleX(0);
 }
 
 .menu-toggle {
@@ -138,6 +148,8 @@ img {
   background: #ffffff;
   color: var(--foreground);
   cursor: pointer;
+  z-index: 50;
+  position: relative;
 }
 
 .menu-close,
@@ -1048,26 +1060,43 @@ img {
     display: block;
   }
 
-  .mobile-open .mobile-nav {
-    display: grid;
+  .mobile-open .mobile-nav,
+  .mobile-nav.mobile-open {
+    display: flex;
   }
 
   .mobile-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.45rem;
-    padding-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    background: #ffffff;
+    z-index: 9999;
+    padding: 2rem;
+    overflow-y: auto;
   }
 
   .mobile-link {
-    border: 1px solid var(--border);
-    border-radius: 0.65rem;
-    background: #ffffff;
-    padding: 0.75rem 0.85rem;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 1rem 2rem;
     text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 
   .mobile-link.active {
-    border-color: var(--foreground);
+    color: var(--foreground);
+    background: var(--soft);
+    border-radius: 0.75rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
   }
 
   .hero-grid {

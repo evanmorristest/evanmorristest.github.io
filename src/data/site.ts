@@ -24,7 +24,7 @@ export const heroContent = {
   name: "Evan Morris",
   role: "Software Engineer & Automation Tester",
   summary:
-    "I have years of experience owning end-to-end quality in software development. I build automation frameworks, testing tools, drive quality in engineering teams.",
+    "I have years of experience owning end-to-end quality in software development. I build automation frameworks, testing tools, and drive quality in engineering teams.",
   visualLabel: "Monochrome development workspace illustration",
   codeSnippet: `const portfolio = {
   role: "Software Engineer",
@@ -103,7 +103,6 @@ export const sectionContent = {
     updatedLabel: "Updated"
   },
   projectsIndex: {
-    title: "GitHub Repositories",
     emptyTitle: "No public GitHub repositories found.",
     emptyDescription:
       "Public repositories from GitHub will appear here automatically once they are available."
@@ -134,7 +133,7 @@ export const pageContent = {
     eyebrow: "Projects",
     title: "Personal projects, useful tools and interesting ideas.",
     description:
-      "Public GitHub repositories are fetched at build time and presented here with descriptions, languages, topics, live links, and source links."
+      "The repositories that are public on my GitHub profile will appear here."
   },
   blog: {
     metaTitle: "Blog | Software Engineer Portfolio",

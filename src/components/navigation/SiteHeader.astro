@@ -27,25 +27,31 @@ const isActive = (href: string) =>
       <X class="menu-close" size={22} aria-hidden="true" />
     </button>
   </div>
-
-  <nav class="mobile-nav site-shell" aria-label={navigationContent.mobileAriaLabel}>
-    {
-      navigationItems.map((item) => (
-        <a href={item.href} class:list={["mobile-link", { active: isActive(item.href) }]}>
-          {item.label}
-        </a>
-      ))
-    }
-  </nav>
 </header>
 
-<script define:vars={{ openMenuLabel: navigationContent.openMenuLabel, closeMenuLabel: navigationContent.closeMenuLabel }}>
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+<nav class="mobile-nav site-shell" aria-label={navigationContent.mobileAriaLabel}>
+  {
+    navigationItems.map((item) => (
+      <a href={item.href} class:list={["mobile-link", { active: isActive(item.href) }]}>
+        {item.label}
+      </a>
+    ))
+  }
+</nav>
 
-  toggle?.addEventListener("click", () => {
-    const isOpen = header?.classList.toggle("mobile-open") ?? false;
-    toggle.setAttribute("aria-expanded", String(isOpen));
-    toggle.setAttribute("aria-label", isOpen ? closeMenuLabel : openMenuLabel);
+<script define:vars={{ openMenuLabel: navigationContent.openMenuLabel, closeMenuLabel: navigationContent.closeMenuLabel }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const toggle = document.querySelector(".menu-toggle");
+
+    if (toggle && toggle instanceof HTMLButtonElement) {
+      toggle.addEventListener("click", () => {
+        const isOpen = mobileNav?.classList.toggle("mobile-open") ?? false;
+        header?.classList.toggle("mobile-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? closeMenuLabel : openMenuLabel);
+      });
+    }
   });
 </script>
