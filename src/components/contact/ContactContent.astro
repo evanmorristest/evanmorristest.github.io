@@ -1,0 +1,109 @@
+---
+import { ArrowRight, Briefcase, FileText, Github, Linkedin, Mail, Mic, Settings, Users } from "lucide-astro";
+import { contactData } from "@data/contact";
+
+const renderIcon = (icon: string) => {
+  const icons = {
+    ArrowRight,
+    Briefcase,
+    FileText,
+    Github,
+    Linkedin,
+    Mail,
+    Mic,
+    Settings,
+    Users
+  };
+
+  return icons[icon as keyof typeof icons] || ArrowRight;
+};
+---
+
+<section class="section-block contact-hero-section">
+  <div class="site-shell contact-hero-grid">
+    <div class="contact-hero-copy">
+      <span class="eyebrow contact-eyebrow">{contactData.hero.eyebrow}</span>
+      <h1>{contactData.hero.title}</h1>
+      <p class="contact-hero-description">{contactData.hero.description}</p>
+    </div>
+
+    <aside class="contact-hero-image">
+      <img src={contactData.hero.image} alt={contactData.hero.imageAlt} />
+    </aside>
+  </div>
+</section>
+
+<section class="section-block contact-links-section">
+  <div class="site-shell contact-links-grid">
+    {contactData.cards.map((card) => {
+      const Icon = renderIcon(card.icon);
+      return (
+        <a
+          class="contact-card"
+          href={card.href}
+          target={card.external ? "_blank" : undefined}
+          rel={card.external ? "noreferrer" : undefined}
+          download={card.download}
+        >
+          <div class="contact-card-icon"><Icon size={20} aria-hidden="true" /></div>
+          <div class="contact-card-copy">
+            <span class="contact-card-label">{card.label}</span>
+            <strong>{card.title}</strong>
+            <p>{card.description}</p>
+          </div>
+          <span class="contact-card-arrow"><ArrowRight size={16} aria-hidden="true" /></span>
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<section class="section-block contact-form-section">
+  <div class="site-shell contact-form-panel">
+    <div class="contact-form-copy">
+      <span class="eyebrow">{contactData.form.title}</span>
+      <h2>{contactData.form.title}</h2>
+      <p>{contactData.form.description}</p>
+    </div>
+    <form class="contact-form" method="post" action="#">
+      <div class="contact-form-grid">
+        {contactData.form.fields.map((field) => (
+          field.type === "textarea" ? (
+            <label class="contact-field">
+              <span>{field.label}</span>
+              <textarea name={field.name} placeholder={field.placeholder}></textarea>
+            </label>
+          ) : (
+            <label class="contact-field">
+              <span>{field.label}</span>
+              <input name={field.name} type={field.type} placeholder={field.placeholder} />
+            </label>
+          )
+        ))}
+      </div>
+      <button type="submit" class="button primary contact-submit">{contactData.form.submitLabel}</button>
+    </form>
+  </div>
+</section>
+
+<section class="section-block contact-interest-section">
+  <div class="site-shell">
+    <div class="section-heading stacked">
+      <h2>{contactData.interests.title}</h2>
+    </div>
+    <div class="contact-interest-grid">
+      {contactData.interests.items.map((item) => {
+        const Icon = renderIcon(item.icon);
+        return (
+          <article class="interest-card">
+            <div class="interest-card-icon"><Icon size={18} aria-hidden="true" /></div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
