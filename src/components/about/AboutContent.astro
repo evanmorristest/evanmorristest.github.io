@@ -110,7 +110,6 @@ const renderIcon = (icon: string) => {
             <h3>{ed.title}</h3>
             <span class="education-school">{ed.institution}</span>
           </div>
-          <p>{ed.description}</p>
         </article>
       ))}
     </aside>
@@ -173,7 +172,6 @@ const renderIcon = (icon: string) => {
           href={action.href}
           target={action.href.startsWith("http") ? "_blank" : undefined}
           rel={action.href.startsWith("http") ? "noreferrer" : undefined}
-          download={action.download}
         >
           {action.label}
         </a>
