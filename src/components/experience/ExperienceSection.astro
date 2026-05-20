@@ -60,11 +60,6 @@ const timelineGroups = [
                     </div>
                     <p class="timeline-company">{item.source}</p>
                     <p>{item.description}</p>
-                    {"credentialUrl" in item && item.credentialUrl && (
-                      <a class="timeline-link" href={item.credentialUrl} target="_blank" rel="noreferrer">
-                        {section.credentialLabel} <ExternalLink size={14} aria-hidden="true" />
-                      </a>
-                    )}
                   </article>
                 ))}
               </div>
