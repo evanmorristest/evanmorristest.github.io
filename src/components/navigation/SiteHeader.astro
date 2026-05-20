@@ -29,7 +29,10 @@ const isActive = (href: string) =>
   </div>
 </header>
 
-<nav class="mobile-nav site-shell" aria-label={navigationContent.mobileAriaLabel}>
+<nav class="mobile-nav" aria-label={navigationContent.mobileAriaLabel}>
+  <button class="mobile-close" type="button" aria-label={navigationContent.closeMenuLabel}>
+    <X size={24} aria-hidden="true" />
+  </button>
   {
     navigationItems.map((item) => (
       <a href={item.href} class:list={["mobile-link", { active: isActive(item.href) }]}>
@@ -51,6 +54,17 @@ const isActive = (href: string) =>
         header?.classList.toggle("mobile-open", isOpen);
         toggle.setAttribute("aria-expanded", String(isOpen));
         toggle.setAttribute("aria-label", isOpen ? closeMenuLabel : openMenuLabel);
+      });
+    }
+    const mobileClose = document.querySelector(".mobile-close");
+    if (mobileClose && mobileClose instanceof HTMLButtonElement) {
+      mobileClose.addEventListener("click", () => {
+        mobileNav?.classList.remove("mobile-open");
+        header?.classList.remove("mobile-open");
+        if (toggle && toggle instanceof HTMLButtonElement) {
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", openMenuLabel);
+        }
       });
     }
   });

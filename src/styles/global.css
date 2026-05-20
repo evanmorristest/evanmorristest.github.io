@@ -1731,6 +1731,20 @@ img {
     overflow-y: auto;
   }
 
+  .mobile-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: #fff;
+    z-index: 10000;
+  }
+
   .mobile-link {
     border: none;
     border-radius: 0;
