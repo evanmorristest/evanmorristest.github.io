@@ -1,3 +1,5 @@
+import { sharedCta } from "./cta";
+
 export const projectsPageData = {
   hero: {
     eyebrow: "Projects",
@@ -12,11 +14,5 @@ export const projectsPageData = {
     heroImage: "/images/projects-hero.svg",
     heroImageAlt: "Projects workspace illustration"
   },
-  cta: {
-    title: "Interested in working together?",
-    description: "I’m always open to discussing new opportunities and exciting ideas.",
-    actions: [
-      { label: "Get In Touch", href: "/contact/", variant: "primary" },
-    ]
-  }
+  cta: sharedCta
 };

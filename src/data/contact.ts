@@ -28,7 +28,7 @@ export const contactData = {
       external: true
     },
     {
-      label: "Résumé",
+      label: "CV",
       title: "Download PDF",
       description: "Get a printable copy of my resume.",
       href: socialLinks.resume,

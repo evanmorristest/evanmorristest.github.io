@@ -1,3 +1,5 @@
+import { sharedCta } from "./cta";
+
 export const about = {
   hero: {
     eyebrow: "About Me",
@@ -118,15 +120,7 @@ export const about = {
     ]
   },
 
-  cta: {
-    title: "Let’s build something great together.",
-    description: "I’m always open to discussing new opportunities and exciting ideas.",
-    actions: [
-      { label: "Get In Touch", href: "/contact/", variant: "primary" },
-      { label: "View GitHub", href: "https://github.com/evanmorristest", variant: "secondary" },
-      { label: "Download Résumé", href: "/resume/resume.pdf", variant: "secondary", download: true }
-    ]
-  }
+  cta: sharedCta
 };
 
 export default about;
