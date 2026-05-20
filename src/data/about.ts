@@ -19,7 +19,7 @@ export const about = {
       {
         title: "Keep it Simple",
         description: "I believe simple solutions are easier to build, maintain and scale.",
-        icon: "Cube"
+        icon: "Box"
       },
       {
         title: "Build for Reliability",

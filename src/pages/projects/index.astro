@@ -1,17 +1,11 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import PageIntro from "@components/shared/PageIntro.astro";
-import FeaturedProjects from "@components/projects/FeaturedProjects.astro";
+import ProjectsContent from "@components/projects/ProjectsContent.astro";
 import { pageContent } from "@data/site";
 
 const page = pageContent.projects;
 ---
 
 <BaseLayout title={page.metaTitle}>
-  <PageIntro
-    eyebrow={page.eyebrow}
-    title={page.title}
-    description={page.description}
-  />
-  <FeaturedProjects mode="all" />
+  <ProjectsContent />
 </BaseLayout>

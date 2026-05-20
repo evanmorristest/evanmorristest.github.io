@@ -1,0 +1,145 @@
+---
+import { ArrowRight, CalendarDays, Clock, ExternalLink, MessageCircle, ThumbsUp } from "lucide-astro";
+import { blogContent } from "@data/site";
+import { blogPageData } from "@data/blogPage";
+
+interface DevArticle {
+  id: number;
+  title: string;
+  description: string;
+  cover_image: string | null;
+  social_image: string;
+  readable_publish_date: string;
+  tag_list: string[];
+  url: string;
+  comments_count: number;
+  public_reactions_count: number;
+  reading_time_minutes: number;
+}
+
+const DEV_ARTICLES_URL = `https://dev.to/api/articles?username=${blogContent.devUsername}&per_page=${blogContent.articlesPerPage}`;
+
+let articles: DevArticle[] = [];
+let hasFetchError = false;
+
+try {
+  const response = await fetch(DEV_ARTICLES_URL, {
+    headers: {
+      "User-Agent": blogContent.apiUserAgent
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`DEV API responded with ${response.status}`);
+  }
+
+  articles = await response.json();
+} catch (error) {
+  hasFetchError = true;
+  console.error(blogContent.errorLogMessage, error);
+}
+---
+
+<section class="section-block page-hero page-hero-blog">
+  <div class="site-shell page-hero-grid">
+    <div>
+      <span class="eyebrow page-eyebrow">{blogPageData.hero.eyebrow}</span>
+      <h1>{blogPageData.hero.title}</h1>
+      <p class="page-hero-description">{blogPageData.hero.description}</p>
+    </div>
+    <aside class="page-hero-image">
+      <img src={blogPageData.hero.heroImage} alt={blogPageData.hero.heroImageAlt} />
+    </aside>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="site-shell">
+    {articles.length > 0 ? (
+      <div class="blog-grid blog-grid-page">
+        {articles.map((article) => (
+          <article class="blog-card blog-card-page">
+            <a class="blog-image" href={article.url} target="_blank" rel="noreferrer">
+              {article.cover_image || article.social_image ? (
+                <img
+                  src={article.cover_image ?? article.social_image}
+                  alt={article.title}
+                  loading="lazy"
+                />
+              ) : (
+                <span>{article.title}</span>
+              )}
+            </a>
+
+            <div class="blog-body">
+              <div class="blog-meta">
+                <span>
+                  <CalendarDays size={15} aria-hidden="true" />
+                  {article.readable_publish_date}
+                </span>
+                <span>
+                  <Clock size={15} aria-hidden="true" />
+                  {article.reading_time_minutes} min read
+                </span>
+              </div>
+
+              <h3>
+                <a href={article.url} target="_blank" rel="noreferrer">{article.title}</a>
+              </h3>
+              <p>{article.description}</p>
+
+              <div class="tag-list">
+                {article.tag_list.slice(0, 4).map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
+
+            <div class="blog-footer">
+              <span>
+                <ThumbsUp size={15} aria-hidden="true" />
+                {article.public_reactions_count}
+              </span>
+              <span>
+                <MessageCircle size={15} aria-hidden="true" />
+                {article.comments_count}
+              </span>
+              <a href={article.url} target="_blank" rel="noreferrer">
+                Read post <ArrowRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>{hasFetchError ? "Blog posts could not be loaded." : "No posts available yet."}</h2>
+        <p>
+          {hasFetchError
+            ? "There was an issue loading posts from the blog source. Please try again later."
+            : "New writing will appear here once published."}
+        </p>
+      </div>
+    )}
+  </div>
+</section>
+
+<section class="section-block page-cta-section">
+  <div class="site-shell page-cta-panel">
+    <div>
+      <p class="eyebrow page-cta-eyebrow">{blogPageData.cta.title}</p>
+      <p>{blogPageData.cta.description}</p>
+    </div>
+    <div class="page-cta-actions">
+      {blogPageData.cta.actions.map((action) => (
+        <a
+          class={`button ${action.variant}`}
+          href={action.href}
+          download={action.download}
+          target={action.href.startsWith("http") ? "_blank" : undefined}
+          rel={action.href.startsWith("http") ? "noreferrer" : undefined}
+        >
+          {action.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

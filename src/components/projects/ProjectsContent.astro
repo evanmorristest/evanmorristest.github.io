@@ -1,0 +1,91 @@
+---
+import { ArrowRight, ExternalLink, Github, Star } from "lucide-astro";
+import { getGitHubProjects, type Project } from "@utils/githubProjects";
+import { projectsPageData } from "@data/projectsPage";
+
+let projects: Project[] = [];
+let hasFetchError = false;
+
+try {
+  projects = await getGitHubProjects();
+} catch (error) {
+  hasFetchError = true;
+  console.error("Project fetch error", error);
+}
+---
+
+<section class="section-block page-hero page-hero-projects">
+  <div class="site-shell page-hero-grid">
+    <div>
+      <span class="eyebrow page-eyebrow">{projectsPageData.hero.eyebrow}</span>
+      <h1>{projectsPageData.hero.title}</h1>
+      <p class="page-hero-description">{projectsPageData.hero.description}</p>
+    </div>
+    <aside class="page-hero-image">
+      <img src={projectsPageData.hero.heroImage} alt={projectsPageData.hero.heroImageAlt} />
+    </aside>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="site-shell">
+    {projects.length > 0 ? (
+      <div class="project-grid project-grid-page">
+        {projects.map((project) => (
+          <article class="project-card project-card-page">
+            <a class="project-image project-image-page" href={project.githubUrl} target="_blank" rel="noreferrer">
+              <span>{project.imageLabel}</span>
+            </a>
+            <div class="project-body">
+              <h3><a href={project.githubUrl} target="_blank" rel="noreferrer">{project.title}</a></h3>
+              <p>{project.summary}</p>
+              <div class="tag-list">
+                {project.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </div>
+            <div class="project-links project-links-page">
+              <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                <Github size={14} aria-hidden="true" /> GitHub
+              </a>
+              <div class="project-meta">
+                <span><Star size={14} aria-hidden="true" /> {project.stars}</span>
+                <span>{new Date(project.updatedAt).toLocaleDateString(undefined, { year: "numeric", month: "short" })}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>{hasFetchError ? "Projects could not be loaded." : "No projects found."}</h2>
+        <p>
+          {hasFetchError
+            ? "There was an issue loading GitHub projects. Please check your connection or update the GitHub API settings."
+            : "Public repositories from GitHub will appear here automatically once they are available."}
+        </p>
+      </div>
+    )}
+  </div>
+</section>
+
+<section class="section-block page-cta-section">
+  <div class="site-shell page-cta-panel">
+    <div>
+      <p class="eyebrow page-cta-eyebrow">{projectsPageData.cta.title}</p>
+      <p>{projectsPageData.cta.description}</p>
+    </div>
+    <div class="page-cta-actions">
+      {projectsPageData.cta.actions.map((action) => (
+        <a
+          class={`button ${action.variant}`}
+          href={action.href}
+          download={action.download}
+          target={action.href.startsWith("http") ? "_blank" : undefined}
+          rel={action.href.startsWith("http") ? "noreferrer" : undefined}
+        >
+          {action.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
