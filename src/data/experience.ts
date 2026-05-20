@@ -44,23 +44,19 @@ export const certifications = [
     title: "Microsoft Certified: Azure Data Fundamentals",
     issuer: "Microsoft",
     timeline: "Issued 2022",
-    description:
-      "",
-    credentialUrl: "#"
+    description: "",
   },
   {
     title: "Level 3 Certificate in Programming",
     issuer: "BCS, The Chartered Institute for IT",
     timeline: "Issued 2021",
-    description: "",
-    credentialUrl: "#"
+    description: ""
   },
   {
     title: "Level 3 Certificate in Software Development Context and Methodologies",
     issuer: "BCS, The Chartered Institute for IT",
     timeline: "Issued 2021",
     description: "",
-    credentialUrl: "#"
   }
 ];
 
