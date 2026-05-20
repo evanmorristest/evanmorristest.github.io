@@ -1971,7 +1971,17 @@ img {
   }
 
   .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
+    justify-items: center;
+  }
+
+  .footer-intro {
+    grid-column: 1 / -1;
+  }
+
+  .footer-link span {
+    display: none;
   }
 
   .footer-bottom {
