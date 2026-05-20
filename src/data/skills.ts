@@ -3,18 +3,18 @@ export const skillGroups = [
     category: "Infrastructure",
     items: [
       { name: "Windows", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg" },
-      { name: "Linux", iconUrl: "https://api.iconify.design/simple-icons/linux.svg?color=%23111111" },
-      { name: "macOS", iconUrl: "https://api.iconify.design/simple-icons/apple.svg?color=%23111111" },
-      { name: "iOS", iconUrl: "https://api.iconify.design/simple-icons/ios.svg?color=%23111111" },
-      { name: "Android", iconUrl: "https://api.iconify.design/simple-icons/android.svg?color=%23111111" }
+      { name: "Linux", iconUrl: "https://cdn.simpleicons.org/linux" },
+      { name: "macOS", iconUrl: "https://cdn.simpleicons.org/apple" },
+      { name: "iOS", iconUrl: "https://cdn.simpleicons.org/ios" },
+      { name: "Android", iconUrl: "https://cdn.simpleicons.org/android" }
     ]
   },
   {
     category: "Automation",
     items: [
-      { name: "WDIO", iconUrl: "https://api.iconify.design/simple-icons/webdriverio.svg?color=%23111111" },
-      { name: "Selenium", iconUrl: "https://api.iconify.design/simple-icons/selenium.svg?color=%23111111" },
-      { name: "Playwright", iconUrl: "https://api.iconify.design/simple-icons/playwright.svg?color=%23111111" },
+      { name: "WDIO", iconUrl: "https://cdn.simpleicons.org/webdriverio" },
+      { name: "Selenium", iconUrl: "https://cdn.simpleicons.org/selenium" },
+      { name: "Playwright", iconUrl: "https://playwright.dev/img/playwright-logo.svg" },
       { name: "BrowserStack", iconUrl: "https://logo.svgcdn.com/logos/browserstack.svg" },
       { name: "Karate", iconUrl: "https://karatelabs.github.io/resources/square.svg" }
     ]
@@ -28,17 +28,17 @@ export const skillGroups = [
   {
     category: "AI",
     items: [
-      { name: "Cursor", iconUrl: "https://api.iconify.design/simple-icons/cursor.svg?color=%23111111" },
-      { name: "Codex", iconUrl: "https://api.iconify.design/simple-icons/openai.svg?color=%23111111" },
-      { name: "Claude", iconUrl: "https://api.iconify.design/simple-icons/anthropic.svg?color=%23111111" }
+      { name: "Cursor", iconUrl: "https://cdn.simpleicons.org/cursor" },
+      { name: "Codex", iconUrl: "https://upload.wikimedia.org/wikipedia/commons/0/04/OpenAI_Logo.svg" },
+      { name: "Claude", iconUrl: "https://cdn.simpleicons.org/anthropic" }
     ]
   },
   {
     category: "Languages",
     items: [
-      { name: "C#", iconUrl: "https://api.iconify.design/simple-icons/csharp.svg?color=%23111111" },
-      { name: "TypeScript", iconUrl: "https://api.iconify.design/simple-icons/typescript.svg?color=%23111111" },
-      { name: "Python", iconUrl: "https://api.iconify.design/simple-icons/python.svg?color=%23111111" }
+      { name: "C#", iconUrl: "https://cdn.simpleicons.org/csharp" },
+      { name: "TypeScript", iconUrl: "https://cdn.simpleicons.org/typescript" },
+      { name: "Python", iconUrl: "https://cdn.simpleicons.org/python" }
     ]
   }
 ];

@@ -808,7 +808,7 @@ img {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
-  filter: grayscale(100%);
+  filter: none;
 }
 
 .experience-grid {
