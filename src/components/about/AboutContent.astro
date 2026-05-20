@@ -1,95 +1,181 @@
 ---
-import { aboutContent } from "@data/site";
+import { ArrowUpRight, Download, Github, Briefcase, MapPin, Globe2, Cube, ShieldCheck, Sparkles, Code2, Server, Cloud, Layers, Monitor, Wrench, Settings } from "lucide-astro";
+import about from "@data/about";
+
+const data = about;
+
+const renderIcon = (icon: string) => {
+  const icons = {
+    ArrowUpRight,
+    Download,
+    Github,
+    Briefcase,
+    MapPin,
+    Globe2,
+    Cube,
+    ShieldCheck,
+    Sparkles,
+    Code2,
+    Server,
+    Cloud,
+    Layers,
+    Monitor,
+    Wrench,
+    Settings
+  };
+
+  return icons[icon as keyof typeof icons] || ArrowUpRight;
+};
 ---
 
-<section class="section-block about-section">
-  <div class="site-shell about-layout">
-    <article class="about-biography">
-      <div class="section-heading stacked">
-        <h2>{aboutContent.biography.title}</h2>
-      </div>
-      {
-        aboutContent.biography.paragraphs.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))
-      }
-      <div class="about-highlights">
-        {
-          aboutContent.biography.highlights.map((highlight) => (
-            <div>
-              <span>{highlight.label}</span>
-              <strong>{highlight.value}</strong>
-            </div>
-          ))
-        }
-      </div>
-    </article>
+<section class="section-block about-hero-section">
+  <div class="site-shell about-hero-grid">
+    <div class="about-hero-copy">
+      <span class="eyebrow about-eyebrow">{data.hero.eyebrow}</span>
+      <h1>{data.hero.title}</h1>
+      <p class="about-hero-description">{data.hero.description}</p>
 
-    <aside class="about-panel">
-      <h2>{aboutContent.interests.title}</h2>
-      <div class="tag-list">
-        {aboutContent.interests.items.map((item) => <span>{item}</span>)}
+      <div class="about-stat-grid">
+        {data.hero.stats.map((stat) => {
+          const Icon = renderIcon(stat.icon);
+          return (
+            <div class="about-stat-card">
+              <div class="about-stat-icon"><Icon size={18} aria-hidden="true" /></div>
+              <div>
+                <span>{stat.label}</span>
+                <strong>{stat.value}</strong>
+              </div>
+            </div>
+          );
+        })}
       </div>
+    </div>
+
+    <aside class="about-hero-visual">
+      <img src={data.hero.image} alt={data.hero.imageAlt} />
     </aside>
   </div>
 </section>
 
-<section class="section-block about-muted">
-  <div class="site-shell">
-    <div class="section-heading stacked">
-      <h2>{aboutContent.philosophy.title}</h2>
-    </div>
-
-    <div class="about-card-grid">
-      {
-        aboutContent.philosophy.items.map((item) => (
-          <article class="about-card">
-            <h3>{item.title}</h3>
+<section class="section-block about-main-section about-muted">
+  <div class="site-shell about-card-grid">
+    <div>
+      <div class="section-heading stacked">
+        <h2>{data.philosophy.title}</h2>
+      </div>
+      {data.philosophy.items.map((item) => {
+        const Icon = renderIcon(item.icon);
+        return (
+          <article class="about-card about-feature-card">
+            <div class="about-card-header">
+              <div class="about-card-icon"><Icon size={18} aria-hidden="true" /></div>
+              <div>
+                <h3>{item.title}</h3>
+              </div>
+            </div>
             <p>{item.description}</p>
           </article>
-        ))
-      }
+        );
+      })}
+    </div>
+
+    <div>
+      <div class="section-heading stacked">
+        <h2>{data.timeline.title}</h2>
+      </div>
+      <div class="about-timeline">
+        {data.timeline.items.map((item) => (
+          <article class="timeline-item about-timeline-item">
+            <div class="timeline-head">
+              <h4>{item.title}</h4>
+              <span>{item.timeline}</span>
+            </div>
+            <p class="timeline-company">{item.company}</p>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <aside>
+      <div class="section-heading stacked">
+        <h2>{data.education.title}</h2>
+      </div>
+      {data.education.items.map((ed) => (
+        <article class="about-card about-education-card">
+          <div class="education-meta">
+            <span class="education-dates">{ed.timeline}</span>
+            <h3>{ed.title}</h3>
+            <span class="education-school">{ed.institution}</span>
+          </div>
+          <p>{ed.description}</p>
+        </article>
+      ))}
+    </aside>
+  </div>
+</section>
+
+<section class="section-block about-stack-section">
+  <div class="site-shell about-stack-grid">
+    <div>
+      <div class="section-heading stacked">
+        <h2>{data.technologies.title}</h2>
+      </div>
+      <div class="tech-group-grid">
+        {data.technologies.groups.map((group) => {
+          const Icon = renderIcon(group.icon);
+          return (
+            <article class="tech-group-card">
+              <div class="tech-group-header">
+                <div class="tech-group-icon"><Icon size={18} aria-hidden="true" /></div>
+                <h3>{group.label}</h3>
+              </div>
+              <div class="tag-list">
+                {group.items.map((item) => <span>{item}</span>)}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <div>
+      <div class="section-heading stacked">
+        <h2>{data.interests.title}</h2>
+      </div>
+      <div class="interest-grid">
+        {data.interests.items.map((item) => {
+          const Icon = renderIcon(item.icon);
+          return (
+            <div class="interest-card">
+              <div class="interest-card-icon"><Icon size={18} aria-hidden="true" /></div>
+              <span>{item.label}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section-block">
-  <div class="site-shell about-layout">
+<section class="section-block about-cta-section">
+  <div class="site-shell about-cta-panel">
     <div>
-      <div class="section-heading stacked">
-        <h2>{aboutContent.technologies.title}</h2>
-      </div>
-      <div class="about-tech-list">
-        {
-          aboutContent.technologies.groups.map((group) => (
-            <div class="about-tech-row">
-              <h3>{group.label}</h3>
-              <div class="tag-list">
-                {group.items.map((item) => <span>{item}</span>)}
-              </div>
-            </div>
-          ))
-        }
-      </div>
+      <p class="eyebrow about-cta-eyebrow">{data.cta.title}</p>
+      <p class="about-cta-copy">{data.cta.description}</p>
     </div>
-
-    <div>
-      <div class="section-heading stacked">
-        <h2>{aboutContent.timeline.title}</h2>
-      </div>
-      <div class="timeline">
-        {
-          aboutContent.timeline.items.map((item) => (
-            <article class="timeline-item">
-              <div class="timeline-head">
-                <h4>{item.title}</h4>
-                <span>{item.timeline}</span>
-              </div>
-              <p>{item.description}</p>
-            </article>
-          ))
-        }
-      </div>
+    <div class="about-cta-actions">
+      {data.cta.actions.map((action) => (
+        <a
+          class={`button ${action.variant}`}
+          href={action.href}
+          target={action.href.startsWith("http") ? "_blank" : undefined}
+          rel={action.href.startsWith("http") ? "noreferrer" : undefined}
+          download={action.download}
+        >
+          {action.label}
+        </a>
+      ))}
     </div>
   </div>
 </section>
