@@ -1,9 +1,8 @@
 export const projectsPageData = {
   hero: {
     eyebrow: "Projects",
-    title: "A collection of things I’ve built and continue to improve.",
-    description:
-      "Explore the repositories, tooling experiments, and open-source work that reflect my focus on reliability, automation, and developer experience.",
+    title: "Projects, experiments and tools I’ve built.",
+    description: "A collection of public repositories, ideas and engineering experiments — from useful utilities to personal projects.",
     filters: ["All", "C#", "Web", "Tools", "Automation", "Open Source"],
     sortOptions: [
       { value: "recent", label: "Recently updated" },
@@ -18,7 +17,6 @@ export const projectsPageData = {
     description: "I’m always open to discussing new opportunities and exciting ideas.",
     actions: [
       { label: "Get In Touch", href: "/contact/", variant: "primary" },
-      { label: "Download Résumé", href: "/resume/resume.pdf", variant: "secondary", download: true }
     ]
   }
 };
