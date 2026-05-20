@@ -3,13 +3,12 @@ import { sharedCta } from "./cta";
 export const about = {
   hero: {
     eyebrow: "About Me",
-    title: "Building reliable software with purpose and impact.",
+    title: "Focused on delivering high-quality software that makes a difference.",
     description:
-      "I’m a software engineer who enjoys turning complex problems into simple, elegant solutions. I care about clean code, thoughtful design and creating systems that people can rely on every day.",
+      "I build automation frameworks, testing tools, and test software that helps teams ship reliable software faster. My focus is developing solutions that drive quality, improve stability and help deliver with confidence.",
     stats: [
-      { label: "Experience", value: "3+ Years", icon: "Briefcase" },
-      { label: "Based In", value: "Australia", icon: "MapPin" },
-      { label: "Open To", value: "Opportunities", icon: "Globe2" }
+      { label: "Experience", value: "7+ Years", icon: "Briefcase" },
+      { label: "Based In", value: "UK", icon: "MapPin" },
     ],
     image: "/images/about-hero.svg",
     imageAlt: "Laptop on desk workspace"
@@ -19,19 +18,19 @@ export const about = {
     title: "Engineering Philosophy",
     items: [
       {
-        title: "Keep it Simple",
-        description: "I believe simple solutions are easier to build, maintain and scale.",
-        icon: "Box"
+        title: "Shift Left",
+        description: "Testing should happen from the start of the development cycle.",
+        icon: "ArrowLeft"
       },
       {
-        title: "Build for Reliability",
-        description: "I design systems that are dependable, well-tested and resilient in production.",
+        title: "Prevention Over Detection",
+        description: "A bug found in production is expensive. A bug found in a pull request is cheaper. But a bug prevented during the requirements phase costs nothing.",
         icon: "ShieldCheck"
       },
       {
-        title: "Optimize for Impact",
-        description: "I focus on building things that create real value for users and teams.",
-        icon: "Sparkles"
+        title: "Quality is a Team Responsibility",
+        description: "Build a culture where developers, product managers, testers and stakeholders all own quality.",
+        icon: "Users"
       }
     ]
   },
@@ -40,22 +39,22 @@ export const about = {
     title: "Career Journey",
     items: [
       {
-        title: "Senior Software Engineer",
-        timeline: "2024 - Present",
-        company: "TechNova Solutions",
-        description: "Leading a team of engineers building scalable web platforms and automation solutions."
+        title: "Senior Software QA Engineer",
+        timeline: "2026 - Present",
+        company: "Dayinsure",
+        description: "."
       },
       {
-        title: "Software Engineer",
-        timeline: "2022 - 2024",
-        company: "CodeWorks Labs",
-        description: "Built full-stack applications and automated testing frameworks used by thousands of users."
+        title: "Software Automation Engineer",
+        timeline: "2023 - 2025",
+        company: "ControlUp",
+        description: "."
       },
       {
-        title: "Junior Developer",
-        timeline: "2021 - 2022",
-        company: "WebCraft Studio",
-        description: "Developed REST APIs and internal tools, improving team productivity and workflows."
+        title: "Software QA Engineer",
+        timeline: "2019 - 2023",
+        company: "Avanite",
+        description: "."
       }
     ]
   },
@@ -64,16 +63,9 @@ export const about = {
     title: "Education",
     items: [
       {
-        title: "B.Sc. in Computer Science",
-        timeline: "2017 - 2021",
-        institution: "University of Technology",
-        description: "Focused on software engineering, data structures, algorithms and distributed systems."
-      },
-      {
-        title: "High School Diploma",
-        timeline: "2015 - 2017",
-        institution: "Central High School",
-        description: "Graduated with honors."
+        title: "BSc Biology",
+        timeline: "2016 - 2019",
+        institution: "Edge Hill University",
       }
     ]
   },

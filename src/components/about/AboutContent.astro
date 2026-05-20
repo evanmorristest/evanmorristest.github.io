@@ -1,5 +1,5 @@
 ---
-import { ArrowUpRight, Download, Github, Briefcase, MapPin, Globe2, Box, ShieldCheck, Sparkles, Code2, Server, Cloud, Layers, Monitor, Wrench, Settings } from "lucide-astro";
+import { ArrowUpRight, ArrowLeft, Download, Github, Briefcase, MapPin, Globe2, Box, ShieldCheck, Sparkles, Code2, Server, Cloud, Layers, Monitor, Wrench, Settings, Users } from "lucide-astro";
 import about from "@data/about";
 
 const data = about;
@@ -7,6 +7,7 @@ const data = about;
 const renderIcon = (icon: string) => {
   const icons = {
     ArrowUpRight,
+    ArrowLeft,
     Download,
     Github,
     Briefcase,
@@ -21,7 +22,8 @@ const renderIcon = (icon: string) => {
     Layers,
     Monitor,
     Wrench,
-    Settings
+    Settings,
+    Users
   };
 
   return icons[icon as keyof typeof icons] || ArrowUpRight;
