@@ -58,34 +58,6 @@ const renderIcon = (icon: string) => {
   </div>
 </section>
 
-<section class="section-block contact-form-section">
-  <div class="site-shell contact-form-panel">
-    <div class="contact-form-copy">
-      <span class="eyebrow">{contactData.form.title}</span>
-      <h2>{contactData.form.title}</h2>
-      <p>{contactData.form.description}</p>
-    </div>
-    <form class="contact-form" method="post" action="#">
-      <div class="contact-form-grid">
-        {contactData.form.fields.map((field) => (
-          field.type === "textarea" ? (
-            <label class="contact-field">
-              <span>{field.label}</span>
-              <textarea name={field.name} placeholder={field.placeholder}></textarea>
-            </label>
-          ) : (
-            <label class="contact-field">
-              <span>{field.label}</span>
-              <input name={field.name} type={field.type} placeholder={field.placeholder} />
-            </label>
-          )
-        ))}
-      </div>
-      <button type="submit" class="button primary contact-submit">{contactData.form.submitLabel}</button>
-    </form>
-  </div>
-</section>
-
 <section class="section-block contact-interest-section">
   <div class="site-shell">
     <div class="section-heading stacked">

@@ -12,13 +12,6 @@ export const contactData = {
 
   cards: [
     {
-      label: "Email",
-      title: socialLinks.email,
-      description: "Send me an email",
-      href: `mailto:${socialLinks.email}`,
-      icon: "Mail"
-    },
-    {
       label: "GitHub",
       title: socialLinks.github,
       description: "View my repositories",

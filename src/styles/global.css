@@ -353,6 +353,11 @@ img {
 
 .section-block {
   padding-block: 4.8rem;
+  background: #ffffff;
+}
+
+main > section.section-block:nth-of-type(even) {
+  background: #f4f4f5;
 }
 
 .compact-section {
@@ -1428,8 +1433,11 @@ img {
 
 .contact-links-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr));
+  justify-content: center;
   gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .contact-card {
