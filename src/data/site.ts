@@ -140,7 +140,7 @@ export const pageContent = {
     eyebrow: "Blog",
     title: "Notes on software engineering.",
     description:
-      "Latest writing pulled from my DEV.to profile. Consider liking or commenting on articles that you find interesting!"
+      "Latest writing pulled from my DEV.to and Substack publications. Consider liking or commenting on articles that you find interesting!"
   },
   contact: {
     metaTitle: "Contact | Software Engineer Portfolio",
@@ -152,7 +152,10 @@ export const pageContent = {
 };
 
 export const blogContent = {
+  enableDevTo: false,
+  enableSubstack: true,
   devUsername: "evanmorris",
+  substackFeedUrl: "https://evanm11.substack.com/feed",
   articlesPerPage: 9,
   apiUserAgent: "evanmorristest.github.io portfolio site",
   sectionTitle: "Latest Articles",
@@ -163,10 +166,8 @@ export const blogContent = {
   emptyTitle: "No DEV articles found yet.",
   errorTitle: "Articles could not be loaded.",
   errorLogMessage: "Unable to fetch DEV articles",
-  emptyDescription:
-    "Publish articles under the DEV account and they will appear here automatically.",
-  errorDescription:
-    "The DEV API request failed during page generation. The route is still available and will populate on the next successful build.",
+  emptyDescription: "Publish articles under the DEV account and they will appear here automatically.",
+  errorDescription: "The DEV API request failed during page generation. The route is still available and will populate on the next successful build.",
   openProfileLabel: "Open DEV Profile"
 };
 

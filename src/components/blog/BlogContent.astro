@@ -1,43 +1,16 @@
 ---
-import { ArrowRight, CalendarDays, Clock, ExternalLink, MessageCircle, ThumbsUp } from "lucide-astro";
-import { blogContent } from "@data/site";
+import { ArrowRight, CalendarDays, Clock, MessageCircle, ThumbsUp } from "lucide-astro";
 import { blogPageData } from "@data/blogPage";
+import { getArticles, type Article } from "@utils/articles";
 
-interface DevArticle {
-  id: number;
-  title: string;
-  description: string;
-  cover_image: string | null;
-  social_image: string;
-  readable_publish_date: string;
-  tag_list: string[];
-  url: string;
-  comments_count: number;
-  public_reactions_count: number;
-  reading_time_minutes: number;
-}
-
-const DEV_ARTICLES_URL = `https://dev.to/api/articles?username=${blogContent.devUsername}&per_page=${blogContent.articlesPerPage}`;
-
-let articles: DevArticle[] = [];
-let hasFetchError = false;
-
-try {
-  const response = await fetch(DEV_ARTICLES_URL, {
-    headers: {
-      "User-Agent": blogContent.apiUserAgent
-    }
+const { articles, enabledSources, failedSources } = await getArticles();
+const hasFetchError = enabledSources.length > 0 && failedSources.length === enabledSources.length;
+const formatPublishedDate = (article: Article) =>
+  new Date(article.publishedAt).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
   });
-
-  if (!response.ok) {
-    throw new Error(`DEV API responded with ${response.status}`);
-  }
-
-  articles = await response.json();
-} catch (error) {
-  hasFetchError = true;
-  console.error(blogContent.errorLogMessage, error);
-}
 ---
 
 <section class="section-block page-hero page-hero-blog">
@@ -60,9 +33,9 @@ try {
         {articles.map((article) => (
           <article class="blog-card blog-card-page">
             <a class="blog-image" href={article.url} target="_blank" rel="noreferrer">
-              {article.cover_image || article.social_image ? (
+              {article.image ? (
                 <img
-                  src={article.cover_image ?? article.social_image}
+                  src={article.image}
                   alt={article.title}
                   loading="lazy"
                 />
@@ -75,35 +48,43 @@ try {
               <div class="blog-meta">
                 <span>
                   <CalendarDays size={15} aria-hidden="true" />
-                  {article.readable_publish_date}
+                  {article.sourceName} · <time datetime={article.publishedAt}>{formatPublishedDate(article)}</time>
                 </span>
-                <span>
-                  <Clock size={15} aria-hidden="true" />
-                  {article.reading_time_minutes} min read
-                </span>
+                {article.readingTimeMinutes !== undefined && (
+                  <span>
+                    <Clock size={15} aria-hidden="true" />
+                    {article.readingTimeMinutes} min read
+                  </span>
+                )}
               </div>
 
               <h3>
                 <a href={article.url} target="_blank" rel="noreferrer">{article.title}</a>
               </h3>
-              <p>{article.description}</p>
+              {article.description && <p>{article.description}</p>}
 
-              <div class="tag-list">
-                {article.tag_list.slice(0, 4).map((tag) => <span>{tag}</span>)}
-              </div>
+              {article.tags.length > 0 && (
+                <div class="tag-list">
+                  {article.tags.slice(0, 4).map((tag) => <span>{tag}</span>)}
+                </div>
+              )}
             </div>
 
             <div class="blog-footer">
-              <span>
-                <ThumbsUp size={15} aria-hidden="true" />
-                {article.public_reactions_count}
-              </span>
-              <span>
-                <MessageCircle size={15} aria-hidden="true" />
-                {article.comments_count}
-              </span>
+              {article.reactionsCount !== undefined && (
+                <span>
+                  <ThumbsUp size={15} aria-hidden="true" />
+                  {article.reactionsCount}
+                </span>
+              )}
+              {article.commentsCount !== undefined && (
+                <span>
+                  <MessageCircle size={15} aria-hidden="true" />
+                  {article.commentsCount}
+                </span>
+              )}
               <a href={article.url} target="_blank" rel="noreferrer">
-                Read post <ArrowRight size={15} aria-hidden="true" />
+                Read article <ArrowRight size={15} aria-hidden="true" />
               </a>
             </div>
           </article>
